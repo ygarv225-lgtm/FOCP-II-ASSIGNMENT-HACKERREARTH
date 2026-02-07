@@ -1,0 +1,34 @@
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    map<long long, int> singerCount;
+    long long singer;
+
+    for (int i = 0; i < n; i++) {
+        cin >> singer;
+        singerCount[singer]++;
+    }
+
+    int maxCount = 0;
+    for (auto it = singerCount.begin(); it != singerCount.end(); it++) {
+        if (it->second > maxCount) {
+            maxCount = it->second;
+        }
+    }
+
+    int favouriteSingers = 0;
+    for (auto it = singerCount.begin(); it != singerCount.end(); it++) {
+        if (it->second == maxCount) {
+            favouriteSingers++;
+        }
+    }
+
+    cout << favouriteSingers << endl;
+
+    return 0;
+}
